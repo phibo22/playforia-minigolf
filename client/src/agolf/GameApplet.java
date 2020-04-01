@@ -55,7 +55,6 @@ public class GameApplet extends AApplet {
         imageManager.defineImage("bg-lobbyselect.gif");
         imageManager.defineImage("bg-lobby-single.gif");
         imageManager.defineImage("bg-lobby-single-fade.jpg");
-        imageManager.defineImage("bg-lobby-dual.gif");
         imageManager.defineImage("bg-lobby-multi.gif");
         imageManager.defineImage("bg-lobby-multi-fade.jpg");
         imageManager.defineImage("bg-lobby-password.gif");
@@ -162,8 +161,6 @@ public class GameApplet extends AApplet {
                         var5 = this.gameContainer.lobbySelectionPanel.method443(1, true);
                     } else if (this.gameContainer.defaultLobby.equalsIgnoreCase("single")) {
                         var5 = this.gameContainer.lobbySelectionPanel.method443(1, false);
-                    } else if (this.gameContainer.defaultLobby.equalsIgnoreCase("dual")) {
-                        var5 = this.gameContainer.lobbySelectionPanel.method443(2, false);
                     } else if (this.gameContainer.defaultLobby.equalsIgnoreCase("multi")) {
                         var5 = this.gameContainer.lobbySelectionPanel.method443(3, false);
                     }
@@ -270,19 +267,5 @@ public class GameApplet extends AApplet {
 
     private boolean isValidSite() {
         return true;
-    }
-
-    private boolean containsDomain(String host, String domain, String[] tld) {
-        for (int var4 = 0; var4 < tld.length; ++var4) {
-            if (host.equals(domain + "." + tld[var4])) {
-                return true;
-            }
-
-            if (host.endsWith("." + domain + "." + tld[var4])) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

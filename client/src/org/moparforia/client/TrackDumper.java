@@ -70,9 +70,6 @@ public class TrackDumper implements ConnListener {
             }
             else if(args[0].equals("lobbyselect")) {
                 if(args[1].equals("nop")) {
-                    String single = args[2];
-                    String dual = args[3];
-                    String multi = args[4];
                     conn.writeData("lobbyselect\tselect\t1");
                 }
             }

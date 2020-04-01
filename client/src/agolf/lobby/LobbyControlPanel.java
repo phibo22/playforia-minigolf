@@ -18,7 +18,6 @@ class LobbyControlPanel extends Panel implements ActionListener {
     private int width;
     private ColorButton buttonBack;
     private ColorButton buttonSingle;
-    //private ColorButton buttonDual;
     private ColorButton buttonMulti;
     private ColorButton buttonQuit;
 
@@ -56,10 +55,6 @@ class LobbyControlPanel extends Panel implements ActionListener {
             byte lobbyId = 0;
             if (evtSource == this.buttonSingle) {
                 lobbyId = 1;
-            /*
-            } else if (evtSource == this.buttonDual) {
-                lobbyId = 2;
-            */
             } else if (evtSource == this.buttonMulti) {
                 lobbyId = 3;
             }
@@ -78,17 +73,10 @@ class LobbyControlPanel extends Panel implements ActionListener {
             this.remove(this.buttonSingle);
         }
 
-//        this.remove(this.buttonDual);
         this.remove(this.buttonMulti);
         if (!this.gameContainer.disableSinglePlayer && state != 1) {
             this.add(this.buttonSingle);
         }
-
-        /*
-        if (state != 2) {
-            this.add(this.buttonDual);
-        }
-        */
 
         if (state != 3) {
             this.add(this.buttonMulti);
@@ -109,12 +97,6 @@ class LobbyControlPanel extends Panel implements ActionListener {
             this.buttonSingle.setBounds(0, 27, this.height, 20);
             this.buttonSingle.addActionListener(this);
         }
-
-        /*
-        this.buttonDual = new ColorButton(this.gameContainer.textManager.getGame("LobbyControl_Dual"));
-        this.buttonDual.setBounds(0, 52, this.height, 20);
-        this.buttonDual.addActionListener(this);
-        */
 
         this.buttonMulti = new ColorButton(this.gameContainer.textManager.getGame("LobbyControl_Multi"));
         this.buttonMulti.setBounds(0, 77, this.height, 20);

@@ -18,10 +18,8 @@ public class LobbyPanel extends Panel {
     private int height;
     private int activeLobby;
     private LobbySinglePlayerPanel lobbySinglePlayerPanel;
-    private LobbyDualPlayerPanel lobbyDualPlayerPanel;
     private LobbyMultiPlayerPanel lobbyMultiPlayerPanel;
     private LobbyChatPanel lobbyChatPanelSingle;
-    private LobbyChatPanel lobbyChatPanelDual;
     private LobbyChatPanel lobbyChatPanelMulti;
     private LobbyControlPanel lobbyControlPanel;
     private LobbyTrackListAdminPanel lobbyTrackListAdminPanel;
@@ -70,21 +68,6 @@ public class LobbyPanel extends Panel {
             }
         }
 
-        if (lobbyId == 2) {
-            if (this.lobbyDualPlayerPanel == null) {
-                this.lobbyDualPlayerPanel = new LobbyDualPlayerPanel(this.gameContainer, this.width, this.height - 230);
-                this.lobbyDualPlayerPanel.setLocation(0, 0);
-            }
-
-            this.add(this.lobbyDualPlayerPanel);
-            if (this.lobbyChatPanelDual == null) {
-                this.lobbyChatPanelDual = new LobbyChatPanel(this.gameContainer, this.width - 100, 225, 2);
-                this.lobbyChatPanelDual.setLocation(0, this.height - 225);
-            }
-
-            this.add(this.lobbyChatPanelDual);
-        }
-
         if (lobbyId == 3) {
             if (this.lobbyMultiPlayerPanel == null) {
                 this.lobbyMultiPlayerPanel = new LobbyMultiPlayerPanel(this.gameContainer, this.width, this.height - 130);
@@ -127,11 +110,6 @@ public class LobbyPanel extends Panel {
             this.lobbySinglePlayerPanel.requestTrackSetList();
         }
 
-        if (this.activeLobby == 2) {
-            this.lobbyDualPlayerPanel.update(0);
-            this.lobbyDualPlayerPanel.allowChallenges();
-        }
-
         if (this.activeLobby == -1) {
             this.lobbyTrackListAdminPanel.setRefreshTrackList();
         }
@@ -162,16 +140,6 @@ public class LobbyPanel extends Panel {
                 }
             }
 
-            if (this.activeLobby == 2) {
-                if (this.lobbyDualPlayerPanel.handlePacket(args)) {
-                    dummy = true;
-                }
-
-                if (this.lobbyChatPanelDual.handlePacket(args)) {
-                    dummy = true;
-                }
-            }
-
             if (this.activeLobby == 3) {
                 if (this.lobbyMultiPlayerPanel.handlePacket(args)) {
                     dummy = true;
@@ -198,10 +166,6 @@ public class LobbyPanel extends Panel {
             this.lobbyChatPanelSingle.broadcastMessage(var1);
         }
 
-        if (this.lobbyChatPanelDual != null) {
-            this.lobbyChatPanelDual.broadcastMessage(var1);
-        }
-
         if (this.lobbyChatPanelMulti != null) {
             this.lobbyChatPanelMulti.broadcastMessage(var1);
         }
@@ -210,23 +174,6 @@ public class LobbyPanel extends Panel {
 
     protected void writeData(String var1) {
         this.gameContainer.connection.writeData("lobby\t" + var1);
-    }
-
-    protected String getSelectedNickForChallenge() {
-        return this.lobbyChatPanelDual.getSelectedNickForChallenge();
-    }
-
-    protected boolean isUserIgnored(String var1) {
-        return this.lobbyChatPanelDual.isUserIgnored(var1);
-    }
-
-    protected void getUser(String name, boolean var2) {
-        this.lobbyChatPanelDual.getUser(name, var2);
-    }
-
-    protected boolean isNotAcceptingChallenges(String var1) {
-        UserListItem var2 = this.lobbyChatPanelDual.gui_userlist.getUser(var1);
-        return var2 != null ? var2.isNotAcceptingChallenges() : true;
     }
 
     protected Choicer addChoicerNumTracks(Panel container, int x, int y, int width, int height) {
@@ -345,10 +292,6 @@ public class LobbyPanel extends Panel {
 
     protected String getTime(int var1) {
         return var1 == 0 ? this.gameContainer.textManager.getGame("LobbyReal_TimeLimitNo") : this.gameContainer.textManager.getTime((long) var1);
-    }
-
-    protected void addMessage(String var1) {
-        this.lobbyChatPanelDual.addMessage(var1);
     }
 
     protected void quitLobby() {

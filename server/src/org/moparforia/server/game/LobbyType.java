@@ -2,12 +2,11 @@ package org.moparforia.server.game;
 
 public enum LobbyType {
     SINGLE("1"),
-    DUAL("2"),
     MULTI("x");
 
     private final String type;
 
-    private LobbyType(String type) {
+    LobbyType(String type) {
         this.type = type;
     }
 
