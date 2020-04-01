@@ -16,7 +16,6 @@ public class ClientConnectedEvent extends Event {
     @Override
     public void process(Server server) {
         System.out.println("Client connected: " + channel);
-        server.addChannel(channel);
         channel.write("h 1\nc io " + new Random().nextInt(1000000000) + "\nc crt 25\nc ctr\n");
     }
 

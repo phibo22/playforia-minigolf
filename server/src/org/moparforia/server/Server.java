@@ -2,8 +2,6 @@ package org.moparforia.server;
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.*;
-import org.jboss.netty.channel.group.ChannelGroup;
-import org.jboss.netty.channel.group.DefaultChannelGroup;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.codec.frame.DelimiterBasedFrameDecoder;
 import org.jboss.netty.handler.codec.frame.Delimiters;
@@ -31,17 +29,10 @@ public class Server implements Runnable {
         new Server().start();
     }
 
-    public static final boolean DEBUG = true;
-
     private HashMap<Integer, Player> players = new HashMap<Integer, Player>();
-    private ChannelGroup allChannels = new DefaultChannelGroup();
     private ConcurrentLinkedQueue<Event> events = new ConcurrentLinkedQueue<Event>();
     private HashMap<PacketType, ArrayList<PacketHandler>> packetHandlers = new HashMap<PacketType, ArrayList<PacketHandler>>();
-    private String host = "0.0.0.0";
-    private int port = 4242;
     private HashMap<LobbyType, Lobby> lobbies = new HashMap<LobbyType, Lobby>();
-    //private ArrayList<LobbyRef> lobbies = new ArrayList<LobbyRef>();
-    //private HashMap<Integer, Game> games = new HashMap<Integer, Game>();
 
     private int playerIdCounter;
     private int gameIdCounter;
@@ -64,53 +55,6 @@ public class Server implements Runnable {
         if (lobbies.containsKey(id))
             return lobbies.get(id);
         return null;
-    }
-
-    public HashMap<LobbyType, Lobby> getLobbies() {
-        return lobbies;
-    }
-
-    /*public void addGame(Game g) {
-        if (!games.containsValue(g))
-            games.put(g.getGameId(), g);
-    }
-
-    public Game getGame(int gameId) {
-        return games.get(gameId);
-    }
-
-    public HashMap<Integer, Game> getGames() {
-        return games;
-    }
-
-    public HashMap<Integer, Game> getGames(String lobbyId) {
-        HashMap<Integer, Game> map = new HashMap<Integer, Game>();
-        for (Map.Entry<Integer, Game> e : games.entrySet()) {
-            if (e.getValue().getLobbyType().equals(lobbyId)) {
-                map.put(e.getKey(), e.getValue());
-            }
-        }
-        return map;
-    }*/
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public void addChannel(Channel channel) {
-        allChannels.add(channel);
     }
 
     /**
@@ -176,7 +120,7 @@ public class Server implements Runnable {
         bootstrap.setOption("child.tcpNoDelay", true);
         bootstrap.setOption("child.keepAlive", true);
         try {
-            bootstrap.bind(new InetSocketAddress(host, port));
+            bootstrap.bind(new InetSocketAddress("0.0.0.0", 4242));
             new Thread(this).start();
         } catch (Exception ex) {
             ex.printStackTrace();
