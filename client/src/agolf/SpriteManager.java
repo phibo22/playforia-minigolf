@@ -7,6 +7,7 @@ import java.awt.Image;
 
 public class SpriteManager {
 
+    public static final int MAX_PLAYERS = 10;
     private ImageManager imageManager;
     private Image[] shapes;
     private Image[] elements;
@@ -88,7 +89,18 @@ public class SpriteManager {
     }
 
     public Image[] getBalls() {
-        return this.balls;
+        Image[] res = new Image[MAX_PLAYERS];
+        res[0] = this.balls[0];
+        res[1] = this.balls[1];
+        res[2] = this.balls[2];
+        res[3] = this.balls[3];
+        res[4] = this.balls[0];
+        res[5] = this.balls[1];
+        res[6] = this.balls[2];
+        res[7] = this.balls[3];
+        res[8] = this.balls[0];
+        res[9] = this.balls[1];
+        return res;
     }
 
     public int[][] method1138() {

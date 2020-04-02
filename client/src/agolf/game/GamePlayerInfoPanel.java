@@ -26,8 +26,16 @@ class GamePlayerInfoPanel extends Panel implements ItemListener, MouseListener {
     private static final Color aColor373 = new Color(224, 0, 0);
     private static final Color aColor374 = new Color(0, 128, 0);
     private static final Color[][] aColorArrayArray375 = new Color[][]{
-            {new Color(0, 0, 255), new Color(128, 128, 255)}, {new Color(255, 0, 0), new Color(255, 128, 128)},
-            {new Color(128, 128, 0), new Color(128, 128, 64)}, {new Color(0, 160, 0), new Color(64, 160, 64)}
+            {new Color(0, 0, 255), new Color(128, 128, 255)},
+            {new Color(255, 0, 0), new Color(255, 128, 128)},
+            {new Color(128, 128, 0), new Color(128, 128, 64)},
+            {new Color(0, 160, 0), new Color(64, 160, 64)},
+            {new Color(0, 0, 255), new Color(128, 128, 255)},
+            {new Color(255, 0, 0), new Color(255, 128, 128)},
+            {new Color(128, 128, 0), new Color(128, 128, 64)},
+            {new Color(0, 160, 0), new Color(64, 160, 64)},
+            {new Color(0, 0, 255), new Color(128, 128, 255)},
+            {new Color(255, 0, 0), new Color(255, 128, 128)}
     };
 
     private static int anInt376;
