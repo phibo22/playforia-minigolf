@@ -181,9 +181,8 @@ public class LobbySelectPanel extends Panel implements ActionListener, MouseList
 
     protected void handlePacket(String[] args) {
         if (args[1].equals("nop")) {
-            for (int i = 0; i < 3; ++i) {
-                this.lobbyNumPlayers[i] = Integer.parseInt(args[2 + i]);
-            }
+            this.lobbyNumPlayers[0] = Integer.parseInt(args[2 + 0]);
+            this.lobbyNumPlayers[2] = Integer.parseInt(args[2 + 1]);
 
             this.repaint();
         }
