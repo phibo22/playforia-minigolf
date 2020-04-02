@@ -3,7 +3,7 @@ package agolf;
 import agolf.game.GameBackgroundCanvas;
 import com.aapeli.client.ImageManager;
 
-import java.awt.Image;
+import java.awt.*;
 
 public class SpriteManager {
 
@@ -89,17 +89,18 @@ public class SpriteManager {
     }
 
     public Image[] getBalls() {
-        Image[] res = new Image[MAX_PLAYERS];
-        res[0] = this.balls[0];
-        res[1] = this.balls[1];
-        res[2] = this.balls[2];
-        res[3] = this.balls[3];
-        res[4] = this.balls[0];
-        res[5] = this.balls[1];
-        res[6] = this.balls[2];
-        res[7] = this.balls[3];
-        res[8] = this.balls[0];
-        res[9] = this.balls[1];
+        Image[] res = new Image[MAX_PLAYERS * 2];
+        for (int i = 0; i < 4; i++) {
+            res[i] = this.balls[i];
+            res[i + 4] = this.balls[i];
+
+            res[i + MAX_PLAYERS] = this.balls[i + 4];
+            res[i + MAX_PLAYERS + 4] = this.balls[i + 4];
+        }
+        for (int i = 0; i < 2; i++) {
+            res[i + 8] = this.balls[i];
+            res[i + MAX_PLAYERS + 8] = this.balls[i + 4];
+        }
         return res;
     }
 

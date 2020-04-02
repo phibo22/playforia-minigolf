@@ -1534,7 +1534,7 @@ public class GameCanvas extends GameBackgroundCanvas implements Runnable, MouseM
 
         int var8 = 0;
         if (super.gameContainer.graphicsQualityIndex == 3) {
-            var8 = (var5 / 5 + var6 / 5) % 2 * 4;
+            var8 = (var5 / 5 + var6 / 5) % 2 * MAX_PLAYERS;
         }
 
         if (var3 == 0.0D) {

@@ -5,13 +5,12 @@ import agolf.GameContainer;
 import agolf.SynchronizedBool;
 import org.moparforia.client.Launcher;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.LayoutManager;
-import java.awt.Panel;
+import java.awt.*;
 import java.util.StringTokenizer;
 
 public class GamePanel extends Panel {
+
+    private final int OFFSET = 78 + 13;
 
     private GameContainer gameContainer;
     private int width;
@@ -136,7 +135,8 @@ public class GamePanel extends Panel {
                 this.gameChatPanel.addMessage(this.gameContainer.textManager.getGame("GameChat_GameSettings", settings));
             }
 
-        }if (args[1].equals("scoringmulti")) {
+        }
+        if (args[1].equals("scoringmulti")) {
             int len = args.length - 2;
             int[] var3 = new int[len];
 
@@ -157,8 +157,7 @@ public class GamePanel extends Panel {
                 playerCountIndex += 3;
             }
 
-        }
-        else if (args[1].equals("owninfo")) {
+        } else if (args[1].equals("owninfo")) {
             int currentPlayerID = Integer.parseInt(args[2]);
             String currentPlayerClan = args[4].equals("-") ? null : args[4];
             this.gamePlayerInfoPanel.addPlayer(currentPlayerID, args[3], currentPlayerClan, true);
@@ -173,8 +172,7 @@ public class GamePanel extends Panel {
                 this.gameChatPanel.addMessage(playerClan != null ? this.gameContainer.textManager.getGame("GameChat_JoinClan", args[3], playerClan) : this.gameContainer.textManager.getGame("GameChat_Join", args[3]));
             }
 
-        }
-        else if (args[1].equals("part")) {
+        } else if (args[1].equals("part")) {
             int playerId = Integer.parseInt(args[2]);
             String playerName = this.gamePlayerInfoPanel.playerNames[playerId];
             boolean var23 = this.gamePlayerInfoPanel.method358(playerId, Integer.parseInt(args[3]));
@@ -223,8 +221,7 @@ public class GamePanel extends Panel {
             this.gamePlayerInfoPanel.method359();
             this.gameTrackInfoPanel.resetCurrentTrack();
             this.setState(1);
-        }
-        else if (args[1].equals("starttrack")) {
+        } else if (args[1].equals("starttrack")) {
             /**game
              * starttrack
              * t 1908821
@@ -281,7 +278,7 @@ public class GamePanel extends Panel {
                 }
             }
 
-            if(Launcher.debug())
+            if (Launcher.debug())
                 System.out.println("FULL: " + fullInstruction);
 
             if (!hasPlayed) {
@@ -346,8 +343,7 @@ public class GamePanel extends Panel {
             }
 
             this.gamePlayerInfoPanel.setScores(Integer.parseInt(args[2]), trackScores);
-        }
-        else if (args[1].equals("voteskip")) {
+        } else if (args[1].equals("voteskip")) {
             this.gamePlayerInfoPanel.voteSkip(Integer.parseInt(args[2]));
         } else if (args[1].equals("resetvoteskip")) {
             this.gamePlayerInfoPanel.voteSkipReset();
@@ -355,11 +351,9 @@ public class GamePanel extends Panel {
                 this.gameControlPanel.showSkipButton();
             }
 
-        }
-        else if (args[1].equals("rfng")) {
+        } else if (args[1].equals("rfng")) {
             this.gamePlayerInfoPanel.readyForNewGame(Integer.parseInt(args[2]));
-        }
-        else if(args[1].equals("end")) {
+        } else if (args[1].equals("end")) {
             this.gameCanvas.endGame();
             int len = args.length - 2;
             if (len > 0) {
@@ -520,14 +514,14 @@ public class GamePanel extends Panel {
     private void create(Image image) {
         if (this.gameContainer.gameApplet.syncIsValidSite.get()) {
             this.setLayout((LayoutManager) null);
-            this.gamePlayerInfoPanel = new GamePlayerInfoPanel(this.gameContainer, 735, 60);
+            this.gamePlayerInfoPanel = new GamePlayerInfoPanel(this.gameContainer, 735, 60 + OFFSET);
             this.gamePlayerInfoPanel.setLocation(0, 0);
             this.add(this.gamePlayerInfoPanel);
             this.gameCanvas = new GameCanvas(this.gameContainer, image);
-            this.gameCanvas.setLocation(0, 65);
+            this.gameCanvas.setLocation(0, 65 + OFFSET);
             this.add(this.gameCanvas);
             this.gameControlPanel = new GameControlPanel(this.gameContainer, this.gamePlayerInfoPanel, 95, 80);
-            this.gameControlPanel.setLocation(this.width - 95, 445);
+            this.gameControlPanel.setLocation(this.width - 95, 445 + OFFSET);
             this.add(this.gameControlPanel);
         }
     }
@@ -537,10 +531,10 @@ public class GamePanel extends Panel {
             this.setVisible(false);
             int var2 = mode > 0 ? 265 : 400;
             this.gameChatPanel = new GameChatPanel(this.gameContainer, this.width - 100 - 5 - var2 - 5, 80, mode);
-            this.gameChatPanel.setLocation(0, 445);
+            this.gameChatPanel.setLocation(0, 445 + OFFSET);
             this.add(this.gameChatPanel);
             this.gameTrackInfoPanel = new GameTrackInfoPanel(this.gameContainer, var2, 80, mode == 0);
-            this.gameTrackInfoPanel.setLocation(this.width - 100 - 5 - var2, 445);
+            this.gameTrackInfoPanel.setLocation(this.width - 100 - 5 - var2, 445 + OFFSET);
             this.add(this.gameTrackInfoPanel);
             this.setVisible(true);
         }

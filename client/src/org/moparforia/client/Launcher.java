@@ -17,7 +17,7 @@ import java.util.Map;
 public class Launcher extends JFrame {
 
     private final int GAME_WIDTH = 735;
-    private final int GAME_HEIGHT = 525;
+    private final int GAME_HEIGHT = 525 + 78 + 13;
     private final int WINDOW_WIDTH = GAME_WIDTH + 20;
     private final int WINDOW_HEIGHT = GAME_HEIGHT + 40;
     private final int PORT = 4242;

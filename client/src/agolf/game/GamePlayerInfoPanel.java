@@ -5,12 +5,7 @@ import agolf.GameContainer;
 import agolf.SynchronizedInteger;
 import com.aapeli.colorgui.Choicer;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.LayoutManager;
-import java.awt.Panel;
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
@@ -119,7 +114,7 @@ class GamePlayerInfoPanel extends Panel implements ItemListener, MouseListener {
             }
 
             int[] var12 = this.method379();
-            var4 = (5 - this.playerCount) * 13;
+            var4 = (11 - this.playerCount) * 13;
             if (this.anInt386 >= 0 && this.anInt386 < this.anInt382) {
                 this.graphics.setColor(aColor371);
                 this.graphics.fillRect(130 + this.anInt386 * 20 - 5 + 1, var4 - 13, 19, this.playerCount * 15 + 2);
