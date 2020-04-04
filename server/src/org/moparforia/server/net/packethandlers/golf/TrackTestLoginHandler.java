@@ -42,15 +42,14 @@ public class TrackTestLoginHandler implements PacketHandler {
         String password = message.group(2);
         //todo load player from db?
 
-        boolean anonym = true; //!Database.getInstance().authenticateUser(username,password);
-        if (anonym) {
+        if ("".equals(username)) {
             username = "~anonym-" + (int) (Math.random() * 10000);
         }
 
         Player player = (Player) packet.getChannel().getAttachment();
         player.setNick(username);
         player.setEmailVerified(true);
-        player.setRegistered(!anonym);
+        player.setRegistered(false);
         packet.getChannel().write(new Packet(PacketType.DATA, Tools.tabularize("basicinfo", player.isEmailVerified(), player.getAccessLevel(), "t", "f")));
         packet.getChannel().write(new Packet(PacketType.DATA, Tools.tabularize("status", "lobbyselect", 300)));
         return true;
