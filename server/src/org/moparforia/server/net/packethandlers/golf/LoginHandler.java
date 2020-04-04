@@ -30,7 +30,7 @@ public class LoginHandler implements PacketHandler {
         Player player = (Player) packet.getChannel().getAttachment();
 
 
-        String username = "~bar-" + (int) (Math.random() * 10000);
+        String username = "~anonym-" + (int) (Math.random() * 10000);
 
         player.setNick(username);
         player.setEmailVerified(true);
