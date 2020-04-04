@@ -42,6 +42,7 @@ public class TrackTestLoginHandler implements PacketHandler {
         String password = message.group(2);
         //todo load player from db?
 
+        System.out.println("username is: " + username);
         if ("".equals(username)) {
             username = "~anonym-" + (int) (Math.random() * 10000);
         }
