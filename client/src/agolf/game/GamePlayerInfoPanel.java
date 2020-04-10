@@ -21,16 +21,16 @@ class GamePlayerInfoPanel extends Panel implements ItemListener, MouseListener {
     private static final Color aColor373 = new Color(224, 0, 0);
     private static final Color aColor374 = new Color(0, 128, 0);
     private static final Color[][] aColorArrayArray375 = new Color[][]{
-            {new Color(0, 0, 255), new Color(128, 128, 255)},
-            {new Color(255, 0, 0), new Color(255, 128, 128)},
-            {new Color(128, 128, 0), new Color(128, 128, 64)},
-            {new Color(0, 160, 0), new Color(64, 160, 64)},
-            {new Color(0, 0, 255), new Color(128, 128, 255)},
-            {new Color(255, 0, 0), new Color(255, 128, 128)},
-            {new Color(128, 128, 0), new Color(128, 128, 64)},
-            {new Color(0, 160, 0), new Color(64, 160, 64)},
-            {new Color(0, 0, 255), new Color(128, 128, 255)},
-            {new Color(255, 0, 0), new Color(255, 128, 128)}
+            {new Color(59, 106, 246), new Color(111, 154, 248)},
+            {new Color(235, 71, 38), new Color(238, 112, 108)},
+            {new Color(215, 213, 44), new Color(215, 214, 126)},
+            {new Color(85, 209, 36), new Color(137, 211, 123)},
+            {new Color(104, 211, 213), new Color(136, 212, 214)},
+            {new Color(187, 56, 246), new Color(191, 113, 247)},
+            {new Color(153, 153, 153), new Color(204, 204, 204)},
+            {new Color(242, 157, 57), new Color(248, 205, 160)},
+            {new Color(92, 34, 196), new Color(145, 108, 197)},
+            {new Color(142, 58, 21), new Color(197, 155, 155)}
     };
 
     private static int anInt376;
