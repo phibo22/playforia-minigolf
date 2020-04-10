@@ -26,7 +26,7 @@ public class SpriteManager {
         this.shapes = this.parseSpriteSheet("shapes", 28, 4, 15, 15);
         this.elements = this.parseSpriteSheet("elements", 24, 4, 15, 15);
         this.specials = this.parseSpriteSheet("special", 28, 4, 15, 15);
-        this.balls = this.parseSpriteSheet("balls", 8, 4, 13, 13);
+        this.balls = this.parseSpriteSheet("balls", 20, 10, 13, 13);
         this.pixelshapeMasks = new int[28][][];
         this.specialPixelMasks = new int[28][][];
         this.anIntArrayArray968 = new int[GameBackgroundCanvas.trackAdvertSize][];
@@ -89,19 +89,7 @@ public class SpriteManager {
     }
 
     public Image[] getBalls() {
-        Image[] res = new Image[MAX_PLAYERS * 2];
-        for (int i = 0; i < 4; i++) {
-            res[i] = this.balls[i];
-            res[i + 4] = this.balls[i];
-
-            res[i + MAX_PLAYERS] = this.balls[i + 4];
-            res[i + MAX_PLAYERS + 4] = this.balls[i + 4];
-        }
-        for (int i = 0; i < 2; i++) {
-            res[i + 8] = this.balls[i];
-            res[i + MAX_PLAYERS + 8] = this.balls[i + 4];
-        }
-        return res;
+        return this.balls;
     }
 
     public int[][] method1138() {
